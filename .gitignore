@@ -1,0 +1,63 @@
+# ============================================================
+#  自己写的 FOC 工程 —— 只提交源码，不提交编译产物
+# ============================================================
+
+# ---------- Keil MDK-ARM 编译产物（最重要的一段）----------
+# 这些文件每次编译都会重新生成，提交它们会让仓库膨胀到 76MB+
+MDK-ARM/DebugConfig/
+MDK-ARM/RTE/
+MDK-ARM/myself_foc_g431/
+# 注意：.gitignore 不支持行尾注释！# 只有写在行首才是注释，
+# 写在行尾会被当成文件名的一部分，规则就永远匹配不上了。
+MDK-ARM/*.uvguix.*
+MDK-ARM/*.uvoptx
+MDK-ARM/*.lst
+MDK-ARM/*.map
+MDK-ARM/*.htm
+MDK-ARM/*.build_log.htm
+*.o
+*.d
+*.crf
+*.axf
+*.elf
+*.hex
+*.bin
+*.dep
+*.lnp
+*.iex
+*.htm
+*.sct
+*.build_log.htm
+
+# ---------- STM32CubeMX 生成物 ----------
+# .ioc 才是"源文件"：CubeMX 从它生成代码，所以 .ioc 必须提交
+.mxproject
+Core/Inc/main.h.bak
+
+# ---------- 第三方参考资料（体积大，不属于本工程源码）----------
+.lcd_ref/
+工程资料/
+
+# ---------- 本机 / 工具缓存 ----------
+.dsh-vision-toolkit/
+.dsh/
+.vscode/
+.idea/
+*.rar
+*.zip
+*.7z
+*.bak
+*.tmp
+*.log
+Desktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+*.lnk
+
+# ---------- 编译中间目录（通用兜底）----------
+Debug/
+Release/
+build/
+Objects/
+Listings/
+Output/

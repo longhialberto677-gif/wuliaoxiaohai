@@ -1,0 +1,34 @@
+#ifndef __SCHEDULER_H__
+#define __SCHEDULER_H__
+
+#include "bsp_system.h"
+#include "FocAlgorithm.h"
+#include "Encoder.h"
+void scheduler_init();
+void scheduler_run();
+/**
+ * @brief µç»ú½Ç¶È×´Ì¬Ã¶¾Ù
+ * 
+ * 
+ */
+typedef enum
+{
+	THETA_MODE_ZERO = 0,            /* ¹Ì¶¨½Ç¶ÈÁã¶È */
+	THETA_MODE_VF,                  /* VF½Ç¶È×ÔÔö */
+	THETA_MODE_ENCODER,             /* ±àÂëÆ÷½Ç¶È */
+	
+}MotorThetaMode_Enum;	
+
+typedef struct 
+{
+	MotorThetaMode_Enum              Theta_Mode;   /* ½Ç¶È×´Ì¬ */
+	Foc_TypeDef                      Foc;         /* FOC ×´Ì¬ */
+	Vf_SpeedControl_TypeDef          Vf;          /* VF ×´Ì¬ */
+	Encoder_Typedef                  Encoder;     /* ±àÂëÆ÷×´Ì¬ */
+}Motor_TypeDef;
+void Motor_StateMachine_Init(Motor_TypeDef *state);
+void Motor_StateMachine_Run(Motor_TypeDef *state);
+
+extern Motor_TypeDef MotorSystem;
+
+#endif
